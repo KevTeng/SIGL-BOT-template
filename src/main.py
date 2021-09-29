@@ -1,7 +1,6 @@
 import os
 from discord.ext import commands
 
-
 import os
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -32,5 +31,4 @@ async def pong(ctx):
 
 if __name__ == '__main__':
 
-    # token = "ODkyODIzMDQ1OTMxMTcxODYw.YVSgQg.GbHQZ0pSkbndi50vuRzXH3SnZAg"
     bot.run(TOKEN)  # Starts the bot
