@@ -5,7 +5,6 @@ import discord
 
 load_dotenv()
 
-
 bot = commands.Bot(
     command_prefix="!",  # Change to desired prefix
     case_insensitive=True,  # Commands aren't case-sensitive
@@ -14,8 +13,6 @@ bot = commands.Bot(
 
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-intents = discord.Intents.all()
-client = discord.Client(intents=intents)
 
 
 
@@ -66,5 +63,40 @@ async def count(ctx):
     await ctx.send(f'{len(offline)} Offline member(s): {offline}')
 
 
+
+@bot.command()
+async def admin(ctx, member: discord.Member):
+    guild = ctx.guild
+    roles = guild.roles
+
+    check_member = 0
+    for user in guild.members:
+        if user.display_name == member.display_name:
+            check_member = 1
+            break
+    if check_member:
+        await ctx.send(f"User nickname {member.display_name} doesn't exist :(")
+        return
+
+    check_role = 0
+    for role in roles:
+        if role.name == "Admin":
+            admin_role = role
+            check_role = 1
+            break
+    if not check_role:
+        admin_role = await guild.create_role(name="Admin", permissions=Permissions(manage_channels=True, ban_members=True, kick_members=True))
+
+    for role_member in member.roles:
+        if role_member.name == admin_role.name:
+            await ctx.send(f"User {member} already has the role Admin")
+            return
+
+    await member.add_roles(admin_role)
+    await ctx.send(f"User {member} is now an admin ! Gz")
+
+
+
 if __name__ == '__main__':
+
     bot.run(TOKEN)  # Starts the bot
