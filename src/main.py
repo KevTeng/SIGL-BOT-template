@@ -28,6 +28,11 @@ async def on_ready():  # When the bot is ready
 async def pong(ctx):
     await ctx.send('pong')
 
+@bot.command()
+async def name(ctx):
+    name = ctx.author.display_name
+    await ctx.send(name)
+
 
 if __name__ == '__main__':
 
