@@ -39,15 +39,6 @@ async def admin(ctx, member: Member):
     guild = ctx.guild
     roles = guild.roles
 
-    check_member = 0
-    for user in guild.members:
-        if user.display_name == member.display_name:
-            check_member = 1
-            break
-    if check_member:
-        ctx.sed(f"User nickname {member.display_name} doesn't exist :(")
-        return
-
     check_role = 0
     for role in roles:
         if role.name == "Admin":
@@ -65,7 +56,10 @@ async def admin(ctx, member: Member):
     await member.add_roles(admin_role)
     await ctx.send(f"User {member} is now an admin ! Gz")
             
-
+@bot.command()
+async def ban(ctx, member: Member):
+    await member.ban()
+    await ctx.send(f"{member.display_name} has been banned :o")
 
 if __name__ == '__main__':
 

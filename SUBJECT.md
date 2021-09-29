@@ -44,13 +44,11 @@
 ### Administration
 [X] When typing `!admin <A member nickname>`, your bot should create an Admin role (if it doesn't exists) on your server, allowing them to manage channels, kick and ban members, and give it to the member in parameter
 
-- The command checks also
-    - if the member exists or not
-    - if the member already have the role
+- The command checks also if the member already have the role
 
 [ ] When typing `!mute <A member nickname>`, your bot should create a Ghost role (if it doesn't exists), disabling all textual channels permissions for that member. When typing that command towards an already muted member, the action should be reverted
 
-[ ] When typing `!ban <A member nickname>`, your bot should ban that member from the server (**Test with caution**)
+[X] When typing `!ban <A member nickname>`, your bot should ban that member from the server (**Test with caution**)
 
 ### It's all fun and games
 [ ] When typing `!xkcd`, your post should post a random comic from https://xkcd.com
