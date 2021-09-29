@@ -1,7 +1,10 @@
 import os
+
+from discord import Permissions
 from discord.ext import commands
 from dotenv import load_dotenv
 import discord
+from discord.utils import get
 
 load_dotenv()
 
@@ -64,6 +67,18 @@ async def count(ctx):
 
 
     await ctx.send(f'{len(offline)} Offline member(s): {offline}')
+
+@bot.command()
+async def mute(ctx, member: discord.Member):
+    guild = ctx.guild
+
+    # if not get(ctx.guild.roles, name="Ghost"):
+    role = await guild.create_role(name="Ghost", permissions=Permissions(send_messages=False))
+    await member.add_roles(role)
+    await ctx.send(f'{member} +  is muted. good night :)')
+
+
+
 
 
 if __name__ == '__main__':
