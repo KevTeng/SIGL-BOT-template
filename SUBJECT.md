@@ -46,7 +46,7 @@
 
 - The command checks also if the member already have the role
 
-[ ] When typing `!mute <A member nickname>`, your bot should create a Ghost role (if it doesn't exists), disabling all textual channels permissions for that member. When typing that command towards an already muted member, the action should be reverted
+[X] When typing `!mute <A member nickname>`, your bot should create a Ghost role (if it doesn't exists), disabling all textual channels permissions for that member. When typing that command towards an already muted member, the action should be reverted
 
 [X] When typing `!ban <A member nickname>`, your bot should ban that member from the server (**Test with caution**)
 
