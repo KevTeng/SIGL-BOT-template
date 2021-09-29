@@ -102,7 +102,7 @@ async def admin(ctx, member: discord.Member):
     await ctx.send(f"User {member} is now an admin ! Gz")
             
 @bot.command()
-async def ban(ctx, member: Member):
+async def ban(ctx, member: discord.Member):
     await member.ban()
     await ctx.send(f"{member.display_name} has been banned :o")
 
