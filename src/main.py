@@ -1,4 +1,6 @@
 import os
+
+from discord import Permissions
 from discord.ext import commands
 from dotenv import load_dotenv
 import discord
